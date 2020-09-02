@@ -1,0 +1,32 @@
+body {
+    background-color: red;
+}
+
+.wrap {
+    display: flex;
+}
+
+.hidden {
+    display: none;
+}
+
+.arrow {
+    margin: 0 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+
+#page-detail button:hover {
+    background-color: green;
+    cursor: pointer;
+}
+
+.button-child {
+    color: red;
+}
+
+.active {
+   display: none;
+}

@@ -4,12 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pagination</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+    <link rel="stylesheet" href="pagin.css">
 </head>
 <body>
     <h1>Phân trang</h1>
     
     <div id="list-page"></div>
-    <div id='a'></div>
+    <!-- <div id='a'></div> -->
+    Chi tiết từng pagination 
+    <div class="hidden">
+        <div class="wrap"> 
+            <a href="#" class="next arrow" onclick="plusSlides(-1)">
+                <i class="fas fa-arrow-left"></i>
+            </a>
+            <div id="page-detail"></div>
+            <a href="#" class="prev arrow" onclick="plusSlides(1)">
+                <i class="fas fa-arrow-right"></i>
+                
+            </a>
+        </div>
+        
+    </div>
+    
+    
+
+
     <script src="pagin.js"></script>
 </body>
 </html>
