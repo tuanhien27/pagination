@@ -1,6 +1,4 @@
-// phân trang
-
-var arrTotal = [1,2,3,4,5,6,7,8,9,10,11,12,13,14];
+var arrTotal = [1,2,3,4,5,6,7,8,9,10,11,12,13,147,8,9,10,11,12,13,14];
 
 function beforePagin() {
     console.log('mảng nhập vào:' + arrTotal);
@@ -24,12 +22,11 @@ function beforePagin() {
     listPage.innerHTML = addButton.join(''); // dc 3 button, do thành 1 string
 
 }
-
 beforePagin(); // tạo button tương ứng với số pagination
-
+showPage(1); // load trang là show luôn button đầu tiên
 
 function showPage(val) { //show các page khi click vào button tương ứng
-    console.log(`đây là pagination thứ: ${val}`); //1,2,3
+    console.log(`đây là pagination thứ: ${val}`); //1,2,3,4,5
    
     for (let indeX = 1; indeX <= arrTotal.length; indeX++) {
         if (((indeX < (val * 5)) && (indeX > (val - 1)*5)) && (indeX % 5 == 1) ) {
@@ -37,32 +34,75 @@ function showPage(val) { //show các page khi click vào button tương ứng
             var arrFinish = arrTotal.slice(indeX-1,indeX+4); 
             console.log('các trang là: ' + arrFinish); // tìm dc các phần tử trong mảng khi log 1,2,3,4,5 //6
             
+            let detail = document.querySelector('#page-detail'); // đây là bố, vật bám
+            let elm = document.createElement('div');
+            let inner = document.querySelector('.inner');
+            //console.log(inner);
+            elm.setAttribute('class', 'inner');
             arrFinish.forEach(function(v) {
                 console.log('giá trị là '+v);
-                let detail = document.querySelector('#page-detail'); // đây là bố, vật bám
                 let btn = document.createElement('button'); // đây là con, gắn element cho con, tương tác vs thèn con
                 btn.setAttribute("class", "button-child"); // class là button-child
-                
-                console.log(btn);
+                //console.log(btn);
                 btn.innerHTML = `
                 <a>${v}</a>
                 `
-                detail.appendChild(btn); // con bám vào bố => ok
+                elm.appendChild(btn); // btn bám vào elm => ok
             })
-            
+
+            detail.replaceChild(elm, inner);
 
         }
 
     let btnHidden = document.querySelector('.hidden');
     btnHidden.style.display = "block";
     }
+    
+    var allBtn = document.querySelectorAll('.button-total'); //5
+    //console.log(allBtn);
+    //if (val >)
+    for (let j = 0; j < allBtn.length; j++) {
+        allBtn[j].style.backgroundColor = "white";
+    }
+    allBtn[val-1].style.backgroundColor = "yellow";
 
-    pageOf(); 
 }
 
-function pageOf() {
-    console.log('chào cả nhà');
+//-------------- nut next va previous ----------
+var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+    showSlides(slideIndex +=n);
 }
+
+function showSlides(n) {
+    var slides = document.querySelectorAll('.button-total'); //5
+    for (let i = 0; i < slides.length; i++) {
+        slides[i].style.backgroundColor = "white";
+    }
+    if (n > slides.length) { 
+        slideIndex = 1;
+        showPage(1);
+        slides[0].style.backgroundColor = "yellow";
+    };
+    if (n < 1 ) {
+        slideIndex= slides.length;
+        showPage(5);
+        slides[4].style.backgroundColor = "yellow";
+    };
+    
+    if (n >= 1 && n <= slides.length) {
+        slides[n - 1].style.backgroundColor = "yellow";
+        showPage(n);
+    }
+    
+}
+
+
+
+
+
 
 
 //---------------------------------

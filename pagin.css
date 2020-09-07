@@ -1,6 +1,9 @@
 body {
     background-color: red;
 }
+.container {
+    display:flex;
+}
 
 .wrap {
     display: flex;
@@ -21,6 +24,7 @@ body {
 #page-detail button:hover {
     background-color: green;
     cursor: pointer;
+    
 }
 
 .button-child {
